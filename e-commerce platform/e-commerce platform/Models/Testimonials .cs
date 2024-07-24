@@ -9,7 +9,7 @@ namespace e_commerce_platform.Models
         public int TestimonialID { get; set; }
 
         [ForeignKey("User")]
-        public int UserID { get; set; }
+        public string UserID { get; set; }
         public ApplicationUser User { get; set; }  // Navigation property
 
         [Range(1, 5)]
@@ -20,5 +20,7 @@ namespace e_commerce_platform.Models
         public bool Approved { get; set; } = false;
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
+        public bool IsDeleted { get; set; } = false;
     }
 }

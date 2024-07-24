@@ -9,8 +9,8 @@ namespace e_commerce_platform.Models
         public int AddressID { get; set; }
 
         [ForeignKey("User")]
-        public int UserID { get; set; }
-        public User User { get; set; }  // Navigation property
+        public string UserID { get; set; }
+        public ApplicationUser User { get; set; }
 
         [StringLength(255)]
         public string Street { get; set; }
@@ -30,6 +30,7 @@ namespace e_commerce_platform.Models
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
-        public ICollection<Order> Orders { get; set; }  // Navigation property for orders associated with this address
+        public ICollection<Order> Orders { get; set; }
+        public bool IsDeleted { get; set; } = false;
     }
 }

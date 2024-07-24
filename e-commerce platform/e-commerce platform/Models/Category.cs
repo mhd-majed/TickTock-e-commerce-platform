@@ -17,5 +17,7 @@ namespace e_commerce_platform.Models
         [StringLength(255)]
         public string CategoryImage { get; set; }
         public ICollection<Product> Products { get; set; }
+
+        public bool IsDeleted { get; set; } = false;
     }
 }

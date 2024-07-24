@@ -32,6 +32,7 @@ namespace e_commerce_platform.Models
 
         [StringLength(1000)]
         public string Description { get; set; }
+        public bool IsDeleted { get; set; } = false;
 
         [NotMapped]
         public decimal PriceAfterDiscount => Price - (Price * (Discount / 100));

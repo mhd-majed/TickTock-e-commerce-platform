@@ -9,8 +9,8 @@ namespace e_commerce_platform.Models
         public int OrderID { get; set; }
 
         [ForeignKey("User")]
-        public int UserID { get; set; }
-        public User User { get; set; }  // Navigation property
+        public string UserID { get; set; }
+        public ApplicationUser User { get; set; }
 
         public DateTime OrderDate { get; set; } = DateTime.Now;
 
