@@ -18,10 +18,13 @@ namespace e_commerce_platform.Models
         {
             base.OnModelCreating(builder);
 
-            // Apply a global filter to exclude soft deleted users
             builder.Entity<ApplicationUser>().HasQueryFilter(u => !u.IsDeleted);
+            builder.Entity<Category>().HasQueryFilter(c => !c.IsDeleted);
+            builder.Entity<Product>().HasQueryFilter(p => !p.IsDeleted);
         }
         public DbSet<e_commerce_platform.Models.Address> Address { get; set; } = default!;
         public DbSet<e_commerce_platform.Models.Testimonial> Testimonial { get; set; } = default!;
+        public DbSet<e_commerce_platform.Models.Category> Category { get; set; } = default!;
+        public DbSet<e_commerce_platform.Models.Product> Product { get; set; } = default!;
     }
 }

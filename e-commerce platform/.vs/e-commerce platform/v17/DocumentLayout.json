@@ -3,56 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|c:\\users\\hmaje\\desktop\\mobilemart\\e-commerce platform\\e-commerce platform\\data\\dataseed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|solutionrelative:e-commerce platform\\data\\dataseed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|c:\\users\\hmaje\\desktop\\mobilemart\\e-commerce platform\\e-commerce platform\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|solutionrelative:e-commerce platform\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|c:\\users\\hmaje\\desktop\\mobilemart\\e-commerce platform\\e-commerce platform\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|solutionrelative:e-commerce platform\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|c:\\users\\hmaje\\desktop\\mobilemart\\e-commerce platform\\e-commerce platform\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|solutionrelative:e-commerce platform\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|c:\\users\\hmaje\\desktop\\mobilemart\\e-commerce platform\\e-commerce platform\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|solutionrelative:e-commerce platform\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|c:\\users\\hmaje\\desktop\\mobilemart\\e-commerce platform\\e-commerce platform\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|solutionrelative:e-commerce platform\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Migrations\\20240724115649_IntitialCommit3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:e-commerce platform\\Migrations\\20240724115649_IntitialCommit3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|c:\\users\\hmaje\\desktop\\mobilemart\\e-commerce platform\\e-commerce platform\\controllers\\testimonialscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|solutionrelative:e-commerce platform\\controllers\\testimonialscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|c:\\users\\hmaje\\desktop\\mobilemart\\e-commerce platform\\e-commerce platform\\models\\testimonials .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|solutionrelative:e-commerce platform\\models\\testimonials .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|c:\\users\\hmaje\\desktop\\mobilemart\\e-commerce platform\\e-commerce platform\\migrations\\20240724114405_intitialcommit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|solutionrelative:e-commerce platform\\migrations\\20240724114405_intitialcommit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|c:\\users\\hmaje\\desktop\\mobilemart\\e-commerce platform\\e-commerce platform\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|solutionrelative:e-commerce platform\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|c:\\users\\hmaje\\desktop\\mobilemart\\e-commerce platform\\e-commerce platform\\controllers\\addressescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|solutionrelative:e-commerce platform\\controllers\\addressescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|c:\\users\\hmaje\\desktop\\mobilemart\\e-commerce platform\\e-commerce platform\\models\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|solutionrelative:e-commerce platform\\models\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|c:\\users\\hmaje\\desktop\\mobilemart\\e-commerce platform\\e-commerce platform\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|solutionrelative:e-commerce platform\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|c:\\users\\hmaje\\desktop\\mobilemart\\e-commerce platform\\e-commerce platform\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AC9AE040-BDA4-4F64-BDDB-8522C46C4D35}|e-commerce platform\\e-commerce platform.csproj|solutionrelative:e-commerce platform\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -62,175 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Order.cs",
-              "DocumentMoniker": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Models\\Order.cs",
-              "RelativeDocumentMoniker": "e-commerce platform\\Models\\Order.cs",
-              "ToolTip": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Models\\Order.cs",
-              "RelativeToolTip": "e-commerce platform\\Models\\Order.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAA4wCMAAAAAAAAA",
+              "DocumentIndex": 1,
+              "Title": "CategoriesController.cs",
+              "DocumentMoniker": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Controllers\\CategoriesController.cs",
+              "RelativeDocumentMoniker": "e-commerce platform\\Controllers\\CategoriesController.cs",
+              "ToolTip": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Controllers\\CategoriesController.cs",
+              "RelativeToolTip": "e-commerce platform\\Controllers\\CategoriesController.cs",
+              "ViewState": "AQIAAKcAAAAAAAAAAAAAwLsAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T11:26:24.095Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "AddressesController.cs",
-              "DocumentMoniker": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Controllers\\AddressesController.cs",
-              "RelativeDocumentMoniker": "e-commerce platform\\Controllers\\AddressesController.cs",
-              "ToolTip": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Controllers\\AddressesController.cs",
-              "RelativeToolTip": "e-commerce platform\\Controllers\\AddressesController.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAQwBgAAABCAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T11:39:54.838Z",
+              "WhenOpened": "2024-07-26T13:03:04.133Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Dataseed.cs",
-              "DocumentMoniker": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Data\\Dataseed.cs",
-              "RelativeDocumentMoniker": "e-commerce platform\\Data\\Dataseed.cs",
-              "ToolTip": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Data\\Dataseed.cs",
-              "RelativeToolTip": "e-commerce platform\\Data\\Dataseed.cs",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAUwCUAAAAUAAAA",
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "e-commerce platform\\Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "e-commerce platform\\Controllers\\ProductsController.cs",
+              "ViewState": "AQIAAKoAAAAAAAAAAAAIwMAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T11:32:34.389Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Program.cs",
-              "RelativeDocumentMoniker": "e-commerce platform\\Program.cs",
-              "ToolTip": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Program.cs",
-              "RelativeToolTip": "e-commerce platform\\Program.cs",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAwwBAAAABxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T11:19:28.794Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\appsettings.json",
-              "RelativeDocumentMoniker": "e-commerce platform\\appsettings.json",
-              "ToolTip": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\appsettings.json",
-              "RelativeToolTip": "e-commerce platform\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-07-24T11:35:27.089Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "e-commerce platform\\Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "e-commerce platform\\Data\\ApplicationDbContext.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAA4AAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T11:26:58.607Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ApplicationUser.cs",
-              "DocumentMoniker": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Models\\ApplicationUser.cs",
-              "RelativeDocumentMoniker": "e-commerce platform\\Models\\ApplicationUser.cs",
-              "ToolTip": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Models\\ApplicationUser.cs",
-              "RelativeToolTip": "e-commerce platform\\Models\\ApplicationUser.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAsAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T11:21:50.7Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "20240724114405_IntitialCommit.cs",
-              "DocumentMoniker": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Migrations\\20240724114405_IntitialCommit.cs",
-              "RelativeDocumentMoniker": "e-commerce platform\\Migrations\\20240724114405_IntitialCommit.cs",
-              "ToolTip": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Migrations\\20240724114405_IntitialCommit.cs",
-              "RelativeToolTip": "e-commerce platform\\Migrations\\20240724114405_IntitialCommit.cs",
-              "ViewState": "AQIAAGkBAAAAAAAAAAAQwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T11:55:31.329Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "TestimonialsController.cs",
-              "DocumentMoniker": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Controllers\\TestimonialsController.cs",
-              "RelativeDocumentMoniker": "e-commerce platform\\Controllers\\TestimonialsController.cs",
-              "ToolTip": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Controllers\\TestimonialsController.cs",
-              "RelativeToolTip": "e-commerce platform\\Controllers\\TestimonialsController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T11:56:34.619Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "20240724115649_IntitialCommit3.cs",
-              "DocumentMoniker": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Migrations\\20240724115649_IntitialCommit3.cs",
-              "RelativeDocumentMoniker": "e-commerce platform\\Migrations\\20240724115649_IntitialCommit3.cs",
-              "ToolTip": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Migrations\\20240724115649_IntitialCommit3.cs",
-              "RelativeToolTip": "e-commerce platform\\Migrations\\20240724115649_IntitialCommit3.cs",
-              "ViewState": "AQIAAB8AAAAAAAAAAAAQwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T11:56:49.394Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Testimonials .cs",
-              "DocumentMoniker": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Models\\Testimonials .cs",
-              "RelativeDocumentMoniker": "e-commerce platform\\Models\\Testimonials .cs",
-              "ToolTip": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Models\\Testimonials .cs",
-              "RelativeToolTip": "e-commerce platform\\Models\\Testimonials .cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAAwBQAAAA/AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T11:38:58.14Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Address.cs",
-              "DocumentMoniker": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Models\\Address.cs",
-              "RelativeDocumentMoniker": "e-commerce platform\\Models\\Address.cs",
-              "ToolTip": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Models\\Address.cs",
-              "RelativeToolTip": "e-commerce platform\\Models\\Address.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAxwAsAAAAVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T11:38:49.339Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ErrorViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Models\\ErrorViewModel.cs",
-              "RelativeDocumentMoniker": "e-commerce platform\\Models\\ErrorViewModel.cs",
-              "ToolTip": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\Models\\ErrorViewModel.cs",
-              "RelativeToolTip": "e-commerce platform\\Models\\ErrorViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-24T10:48:32.04Z",
+              "WhenOpened": "2024-07-26T13:02:32.307Z",
               "EditorCaption": ""
             }
           ]

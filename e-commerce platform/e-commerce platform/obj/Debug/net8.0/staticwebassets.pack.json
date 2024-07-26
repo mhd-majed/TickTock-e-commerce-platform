@@ -245,6 +245,46 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\uploads\\category_images\\4a7855c672f0ba3e1d306f48edda_242132db-13d7-4d6b-bac1-67ad0b844e87.jpg",
+      "PackagePath": "staticwebassets\\uploads\\category_images\\4a7855c672f0ba3e1d306f48edda_242132db-13d7-4d6b-bac1-67ad0b844e87.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\uploads\\category_images\\4a7855c672f0ba3e1d306f48edda_2628a241-0b85-47ef-a1c6-6b1af889173e.jpg",
+      "PackagePath": "staticwebassets\\uploads\\category_images\\4a7855c672f0ba3e1d306f48edda_2628a241-0b85-47ef-a1c6-6b1af889173e.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\uploads\\category_images\\4a7855c672f0ba3e1d306f48edda_3bc22bc5-5660-45fe-9612-3c62759edac5.jpg",
+      "PackagePath": "staticwebassets\\uploads\\category_images\\4a7855c672f0ba3e1d306f48edda_3bc22bc5-5660-45fe-9612-3c62759edac5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\uploads\\category_images\\4a7855c672f0ba3e1d306f48edda_4a23e033-8614-4271-af9f-4d8772201b0c.jpg",
+      "PackagePath": "staticwebassets\\uploads\\category_images\\4a7855c672f0ba3e1d306f48edda_4a23e033-8614-4271-af9f-4d8772201b0c.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\uploads\\category_images\\4a7855c672f0ba3e1d306f48edda_834edfb0-1d6e-475a-a459-dc9786bed4fd.jpg",
+      "PackagePath": "staticwebassets\\uploads\\category_images\\4a7855c672f0ba3e1d306f48edda_834edfb0-1d6e-475a-a459-dc9786bed4fd.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\uploads\\category_images\\4a7855c672f0ba3e1d306f48edda_9076d3e3-bc2c-425c-ab73-59adb86c0029.jpg",
+      "PackagePath": "staticwebassets\\uploads\\category_images\\4a7855c672f0ba3e1d306f48edda_9076d3e3-bc2c-425c-ab73-59adb86c0029.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\uploads\\category_images\\4a7855c672f0ba3e1d306f48edda_f0cb6a85-6559-492d-a0f3-d3e743ef6ce9.jpg",
+      "PackagePath": "staticwebassets\\uploads\\category_images\\4a7855c672f0ba3e1d306f48edda_f0cb6a85-6559-492d-a0f3-d3e743ef6ce9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\uploads\\product_images\\4a7855c672f0ba3e1d306f48edda_647c8fa3-acec-497e-bd9e-91a1ccc1af8c.jpg",
+      "PackagePath": "staticwebassets\\uploads\\product_images\\4a7855c672f0ba3e1d306f48edda_647c8fa3-acec-497e-bd9e-91a1ccc1af8c.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\uploads\\product_images\\4a7855c672f0ba3e1d306f48edda_d63c7d3a-4735-4ca0-a3df-f8d8ad984cbd.jpg",
+      "PackagePath": "staticwebassets\\uploads\\product_images\\4a7855c672f0ba3e1d306f48edda_d63c7d3a-4735-4ca0-a3df-f8d8ad984cbd.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\uploads\\product_images\\WhatsApp Image 2024-07-14 at 6.44.59 PM_2b1d706c-5eb6-4816-88d5-77506211b2a6.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\product_images\\WhatsApp Image 2024-07-14 at 6.44.59 PM_2b1d706c-5eb6-4816-88d5-77506211b2a6.jpeg"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.e-commerce platform.props",
       "PackagePath": "build\\e-commerce platform.props"
     },
