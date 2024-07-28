@@ -6,16 +6,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using e_commerce_platform.Models;
+using System.Security.Claims;
 
 namespace e_commerce_platform.Controllers
 {
     public class AddressesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<AddressesController> _logger;
 
-        public AddressesController(ApplicationDbContext context)
+        public AddressesController(ApplicationDbContext context, ILogger<AddressesController> logger)
         {
             _context = context;
+            _logger = logger;
+            _logger = logger;
         }
 
         // GET: Addresses
@@ -56,14 +60,20 @@ namespace e_commerce_platform.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AddressID,UserID,Street,City,State,PostalCode,Country,CreatedAt,UpdatedAt,IsDeleted")] Address address)
+        public async Task<IActionResult> Create([Bind("AddressID,Street,City,State,PostalCode,Country")] Address address)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(address);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            address.UserID = userId;
+
+            var user = await _context.Users.FindAsync(userId);
+            address.User = user;
+
+            if (userId != null)
+                {
+                    _context.Add(address);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
             ViewData["UserID"] = new SelectList(_context.Users, "Id", "Id", address.UserID);
             return View(address);
         }
@@ -71,6 +81,7 @@ namespace e_commerce_platform.Controllers
         // GET: Addresses/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            Console.WriteLine(id);
             if (id == null)
             {
                 return NotFound();
@@ -90,35 +101,41 @@ namespace e_commerce_platform.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AddressID,UserID,Street,City,State,PostalCode,Country,CreatedAt,UpdatedAt,IsDeleted")] Address address)
+        public async Task<IActionResult> Edit(int id, [Bind("AddressID,Street,City,State,PostalCode,Country,")] Address address)
         {
+
             if (id != address.AddressID)
             {
                 return NotFound();
             }
-
-            if (ModelState.IsValid)
+            try
             {
-                try
+                var existingAddress = await _context.Address.FindAsync(address.AddressID);
+                if (existingAddress == null)
                 {
-                    _context.Update(address);
-                    await _context.SaveChangesAsync();
+                    return NotFound();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AddressExists(address.AddressID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                existingAddress.Street = address.Street;
+                existingAddress.City = address.City;
+                existingAddress.State = address.State;
+                existingAddress.PostalCode = address.PostalCode;
+                existingAddress.Country = address.Country;
+                existingAddress.UpdatedAt = DateTime.Now;
+                await _context.SaveChangesAsync();
             }
-            ViewData["UserID"] = new SelectList(_context.Users, "Id", "Id", address.UserID);
-            return View(address);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!AddressExists(address.AddressID))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction(nameof(Index));
+            
         }
 
         // GET: Addresses/Delete/5
@@ -148,7 +165,7 @@ namespace e_commerce_platform.Controllers
             var address = await _context.Address.FindAsync(id);
             if (address != null)
             {
-                _context.Address.Remove(address);
+                address.IsDeleted = true;
             }
 
             await _context.SaveChangesAsync();

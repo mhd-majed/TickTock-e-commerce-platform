@@ -30,7 +30,7 @@ namespace e_commerce_platform.Models
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
-        public ICollection<Order> Orders { get; set; }
+        public ICollection<Order>? Orders { get; set; }
         public bool IsDeleted { get; set; } = false;
     }
 }

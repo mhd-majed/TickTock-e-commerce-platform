@@ -5,6 +5,70 @@
       "PackagePath": "staticwebassets\\e-commerce platform.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\assets\\css\\styles.css",
+      "PackagePath": "staticwebassets\\assets\\css\\styles.css"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\assets\\favicon.ico",
+      "PackagePath": "staticwebassets\\assets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\assets\\img\\bg-masthead.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\bg-masthead.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\assets\\img\\portfolio\\fullsize\\1.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\portfolio\\fullsize\\1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\assets\\img\\portfolio\\fullsize\\2.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\portfolio\\fullsize\\2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\assets\\img\\portfolio\\fullsize\\3.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\portfolio\\fullsize\\3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\assets\\img\\portfolio\\fullsize\\4.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\portfolio\\fullsize\\4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\assets\\img\\portfolio\\fullsize\\5.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\portfolio\\fullsize\\5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\assets\\img\\portfolio\\fullsize\\6.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\portfolio\\fullsize\\6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\assets\\img\\portfolio\\thumbnails\\1.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\portfolio\\thumbnails\\1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\assets\\img\\portfolio\\thumbnails\\2.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\portfolio\\thumbnails\\2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\assets\\img\\portfolio\\thumbnails\\3.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\portfolio\\thumbnails\\3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\assets\\img\\portfolio\\thumbnails\\4.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\portfolio\\thumbnails\\4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\assets\\img\\portfolio\\thumbnails\\5.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\portfolio\\thumbnails\\5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\assets\\img\\portfolio\\thumbnails\\6.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\portfolio\\thumbnails\\6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\assets\\js\\scripts.js",
+      "PackagePath": "staticwebassets\\assets\\js\\scripts.js"
+    },
+    {
       "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -273,12 +337,20 @@
       "PackagePath": "staticwebassets\\uploads\\category_images\\4a7855c672f0ba3e1d306f48edda_f0cb6a85-6559-492d-a0f3-d3e743ef6ce9.jpg"
     },
     {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\uploads\\product_images\\4a7855c672f0ba3e1d306f48edda_46eaf8a5-52fd-439c-a56d-30a53f91d50e.jpg",
+      "PackagePath": "staticwebassets\\uploads\\product_images\\4a7855c672f0ba3e1d306f48edda_46eaf8a5-52fd-439c-a56d-30a53f91d50e.jpg"
+    },
+    {
       "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\uploads\\product_images\\4a7855c672f0ba3e1d306f48edda_647c8fa3-acec-497e-bd9e-91a1ccc1af8c.jpg",
       "PackagePath": "staticwebassets\\uploads\\product_images\\4a7855c672f0ba3e1d306f48edda_647c8fa3-acec-497e-bd9e-91a1ccc1af8c.jpg"
     },
     {
       "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\uploads\\product_images\\4a7855c672f0ba3e1d306f48edda_d63c7d3a-4735-4ca0-a3df-f8d8ad984cbd.jpg",
       "PackagePath": "staticwebassets\\uploads\\product_images\\4a7855c672f0ba3e1d306f48edda_d63c7d3a-4735-4ca0-a3df-f8d8ad984cbd.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\uploads\\product_images\\Screenshot 2024-07-02 at 17-37-34 Search Insert Position Leetcode #35 - YouTube_c5862dee-eb3e-451b-beee-2916d062f926.png",
+      "PackagePath": "staticwebassets\\uploads\\product_images\\Screenshot 2024-07-02 at 17-37-34 Search Insert Position Leetcode #35 - YouTube_c5862dee-eb3e-451b-beee-2916d062f926.png"
     },
     {
       "Id": "C:\\Users\\hmaje\\Desktop\\MobileMart\\e-commerce platform\\e-commerce platform\\wwwroot\\uploads\\product_images\\WhatsApp Image 2024-07-14 at 6.44.59 PM_2b1d706c-5eb6-4816-88d5-77506211b2a6.jpeg",
