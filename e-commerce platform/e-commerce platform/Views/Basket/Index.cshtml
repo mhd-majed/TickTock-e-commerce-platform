@@ -1,35 +1,111 @@
 ﻿@model List<e_commerce_platform.Models.BasketItem>
 
-<h1>Basket</h1>
+<section class="basket-area section-gap">
+    <div class="container">
+        <h2>Basket</h2>
+        <br />
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr data-product-id="@item.ProductId">
+                            <td class="text-center">@item.ProductName</td>
+                            <td class="text-center">@item.PriceAfterDiscount.ToString("C")</td>
+                            <td class="text-center">
+                                <div class="quantity-control">
+                                    <button class="btn btn-half-circle-left btn-decrease">-</button>
+                                    <input type="text" class="form-control form-control-sm quantity-input" value="@item.Quantity" readonly />
+                                    <button class="btn btn-half-circle-right btn-increase">+</button>
+                                </div>
+                            </td>
+                            <td class="text-center">@((item.PriceAfterDiscount * item.Quantity).ToString("C"))</td>
+                            <td class="text-center">
+                                <form asp-action="RemoveFromBasket" asp-route-productId="@item.ProductId" method="post" class="d-inline">
+                                    <input type="submit" value="Remove" class="btn btn-danger btn-sm btns" />
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="ClearBasket" method="post">
+                    <input type="submit" value="Clear Basket" class="btn btn-warning btn-lg btn-block btns" />
+                </form>
+            </div>
+            <div class="col-md-4">
+                <a asp-action="Checkout" class="btn btn-success btn-lg btn-block btns">Proceed to Checkout</a>
+                </div>
+            <div class="col-md-4">
+                <span class="subtotal-text">Subtotal: @Model.Sum(item => item.PriceAfterDiscount * item.Quantity).ToString("C")</span>
+            </div>
+        </div>
+    </div>
+</section>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Product Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Total</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.ProductName</td>
-                <td>@item.PriceAfterDiscount.ToString("C")</td>
-                <td>@item.Quantity</td>
-                <td>@(item.Price * item.Quantity)</td>
-                <td>
-                    <form asp-action="Remove" asp-route-productId="@item.ProductId" method="post">
-                        <input type="submit" value="Remove" class="btn btn-danger" />
-                    </form>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
 
-<form asp-action="Clear" method="post">
-    <input type="submit" value="Clear Basket" class="btn btn-warning" />
-</form>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.btn-increase').click(function () {
+                var row = $(this).closest('tr');
+                var productId = row.data('product-id');
+                $.ajax({
+                    url: '@Url.Action("IncreaseQuantity", "Basket")',
+                    type: 'POST',
+                    data: { productId: productId },
+                    success: function (response) {
+                        if (response.success) {
+                            row.find('.quantity-input').val(response.newQuantity);
+                            row.find('td:nth-child(4)').text(response.newTotal);
+                        } else {
+                            alert(response.message);
+                        }
+                    }
+                });
+            });
+
+            $('.btn-decrease').click(function () {
+                var row = $(this).closest('tr');
+                var productId = row.data('product-id');
+                $.ajax({
+                    url: '@Url.Action("DecreaseQuantity", "Basket")',
+                    type: 'POST',
+                    data: { productId: productId },
+                    success: function (response) {
+                        if (response.success) {
+                            row.find('.quantity-input').val(response.newQuantity);
+                            row.find('td:nth-child(4)').text(response.newTotal);
+                        } else {
+                            alert(response.message);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}
+<style>
+    .basket-area {
+        padding: 70px 0;
+    }
+
+    th {
+        text-align: center;
+    }
+</style>

@@ -445,6 +445,29 @@ namespace e_commerce_platform.Migrations
                     b.ToTable("Product");
                 });
 
+            modelBuilder.Entity("e_commerce_platform.Models.ProductImage", b =>
+                {
+                    b.Property<int>("ImageID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ImageID"));
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ImageID");
+
+                    b.HasIndex("ProductID");
+
+                    b.ToTable("ProductImage");
+                });
+
             modelBuilder.Entity("e_commerce_platform.Models.Testimonial", b =>
                 {
                     b.Property<int>("TestimonialID")
@@ -593,6 +616,17 @@ namespace e_commerce_platform.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("e_commerce_platform.Models.ProductImage", b =>
+                {
+                    b.HasOne("e_commerce_platform.Models.Product", "Product")
+                        .WithMany("AdditionalImages")
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("e_commerce_platform.Models.Testimonial", b =>
                 {
                     b.HasOne("e_commerce_platform.Models.ApplicationUser", "User")
@@ -617,6 +651,11 @@ namespace e_commerce_platform.Migrations
             modelBuilder.Entity("e_commerce_platform.Models.Order", b =>
                 {
                     b.Navigation("OrderDetails");
+                });
+
+            modelBuilder.Entity("e_commerce_platform.Models.Product", b =>
+                {
+                    b.Navigation("AdditionalImages");
                 });
 #pragma warning restore 612, 618
         }

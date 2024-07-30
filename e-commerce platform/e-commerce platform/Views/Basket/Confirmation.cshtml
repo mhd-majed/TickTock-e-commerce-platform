@@ -1,0 +1,47 @@
+﻿@model e_commerce_platform.Models.Order
+
+@{
+    ViewData["Title"] = "Order Confirmation";
+}
+
+
+<section class="basket-area section-gap">
+    <div class="container">
+        <br />
+        <br />
+        <div>
+            <h2>Order Details</h2>
+            <p>Order ID: @Model.OrderID</p>
+            <p>Order Date: @Model.OrderDate</p>
+            <p>Total Amount: @Model.TotalAmount</p>
+            <p>Payment Status: @Model.PaymentStatus</p>
+
+            <h3>Order Items</h3>
+            <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.OrderDetails)
+                    {
+                        <tr>
+                            <td>@item.Product.ProductName</td>
+                            <td>@item.Quantity</td>
+                            <td>@item.Price</td>
+                            <td>@item.Total</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+    <br /><br />
+</section>
+

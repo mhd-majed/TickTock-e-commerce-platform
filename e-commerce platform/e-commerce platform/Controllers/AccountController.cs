@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using e_commerce_platform.Models;
 using System.Threading.Tasks;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 
 namespace e_commerce_platform.Controllers
 {
@@ -56,12 +59,26 @@ namespace e_commerce_platform.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    var user = await _userManager.FindByEmailAsync(model.Email);
+                    if (user != null)
+                    {
+                        var roles = await _userManager.GetRolesAsync(user);
+
+                        if (roles.Contains("Admin"))
+                        {
+                            return RedirectToAction("Index", "Orders");
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
+                    }
                 }
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");
             }
             return View(model);
         }
+
 
         [HttpPost]
         public async Task<IActionResult> Logout()
@@ -69,5 +86,61 @@ namespace e_commerce_platform.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
+        public async Task<IActionResult> UserInfo()
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return NotFound("User not found.");
+            }
+
+            var model = new UserInfoViewModel
+            {
+                FullName = user.FullName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+
+            };
+
+            return View(model);
+        }
+
+        // Show Address
+        public async Task<IActionResult> Address()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var user = await _userManager.FindByIdAsync(userId);
+                return View(user.Address);
+            }
+
+            return RedirectToAction("Login", "Account");
+        }
+
+        [Authorize(Roles = "Admin")] 
+        public async Task<IActionResult> index()
+        {
+            var users = await _userManager.Users.ToListAsync();
+            var userViewModels = new List<UserViewModel>();
+
+            foreach (var user in users)
+            {
+                var roles = await _userManager.GetRolesAsync(user);
+                userViewModels.Add(new UserViewModel
+                {
+                    Email = user.Email,
+                    FullName = user.FullName,
+                    PhoneNumber = user.PhoneNumber,
+                    Roles = roles
+                });
+            }
+
+            return View(userViewModels);
+        }
+
+
+
     }
 }

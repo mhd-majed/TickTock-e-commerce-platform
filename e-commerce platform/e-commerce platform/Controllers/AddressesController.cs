@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using e_commerce_platform.Models;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Identity;
+using System.Net;
+using Microsoft.AspNetCore.Authorization;
 
 namespace e_commerce_platform.Controllers
 {
@@ -14,15 +17,18 @@ namespace e_commerce_platform.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly ILogger<AddressesController> _logger;
-
-        public AddressesController(ApplicationDbContext context, ILogger<AddressesController> logger)
+        private readonly UserManager<ApplicationUser> _userManager;
+        public AddressesController(ApplicationDbContext context, ILogger<AddressesController> logger, UserManager<ApplicationUser> userManager)
         {
-            _context = context;
-            _logger = logger;
-            _logger = logger;
+            _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+
+            _logger.LogInformation("AddressesController instantiated with valid dependencies.");
         }
 
         // GET: Addresses
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Address.Include(a => a.User);
@@ -154,7 +160,7 @@ namespace e_commerce_platform.Controllers
                 return NotFound();
             }
 
-            return View(address);
+            return View();
         }
 
         // POST: Addresses/Delete/5
@@ -171,7 +177,21 @@ namespace e_commerce_platform.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        public async Task<IActionResult> MyAddress()
+        {
+            Console.WriteLine("dskjhfkusdhfuhsdiufhsuidhfi7usd");
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound("User not found.");
+            }
 
+            var addresses = await _context.Address
+                .Where(a => a.UserID == user.Id && !a.IsDeleted)
+                .ToListAsync();
+
+            return View(addresses);
+        }
         private bool AddressExists(int id)
         {
             return _context.Address.Any(e => e.AddressID == id);

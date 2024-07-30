@@ -22,7 +22,7 @@ namespace e_commerce_platform.Models
 
         [ForeignKey("Address")]
         public int AddressID { get; set; }
-        public Address Address { get; set; }  // Navigation property
+        public Address Address { get; set; }  
 
         [StringLength(50)]
         public string PaymentStatus { get; set; } = "Pending";
@@ -30,6 +30,6 @@ namespace e_commerce_platform.Models
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
-        public ICollection<OrderDetail> OrderDetails { get; set; }  // Navigation property
+        public ICollection<OrderDetail> OrderDetails { get; set; } 
     }
 }

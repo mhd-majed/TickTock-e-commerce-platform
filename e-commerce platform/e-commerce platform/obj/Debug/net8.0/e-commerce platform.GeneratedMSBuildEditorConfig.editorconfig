@@ -26,12 +26,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\hmaje\Desktop\MobileMart\e-commerce platform\e-commerce platform
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Account/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Account/UserInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxVc2VySW5mby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Addresses/Create.cshtml]
@@ -52,6 +60,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Addresses/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRkcmVzc2VzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Addresses/MyAddress.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRkcmVzc2VzXE15QWRkcmVzcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Basket/Checkout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFza2V0XENoZWNrb3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Basket/Confirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFza2V0XENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Basket/Index.cshtml]
@@ -86,6 +106,54 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Orders/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Orders/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Orders/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Orders/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Orders/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Orders/MyOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXE15T3JkZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/ProductImages/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdEltYWdlc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/ProductImages/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdEltYWdlc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/ProductImages/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdEltYWdlc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/ProductImages/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdEltYWdlc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/ProductImages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdEltYWdlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/ProductImages/UploadImages.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdEltYWdlc1xVcGxvYWRJbWFnZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Products/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -96,6 +164,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Products/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Products/DisplayProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcRGlzcGxheVByb2R1Y3RzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Products/Edit.cshtml]
@@ -110,8 +182,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Shared/_AdminLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Testimonials/Approve.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdGltb25pYWxzXEFwcHJvdmUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Testimonials/Create.cshtml]
@@ -132,6 +212,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Testimonials/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdGltb25pYWxzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/Testimonials/MyTestimonials.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdGltb25pYWxzXE15VGVzdGltb25pYWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/hmaje/Desktop/MobileMart/e-commerce platform/e-commerce platform/Views/_ViewImports.cshtml]

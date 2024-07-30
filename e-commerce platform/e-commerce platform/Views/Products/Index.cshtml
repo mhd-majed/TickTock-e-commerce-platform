@@ -2,6 +2,8 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
 }
 
 <h1>Index</h1>
@@ -66,10 +68,7 @@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ProductID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.ProductID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProductID">Delete</a>
-               
-                    <a asp-action="AddToBasket" asp-controller="Basket" asp-route-productId="@item.ProductID" class="btn btn-primary">Add to Basket</a>
-                
+                <a asp-action="Delete" asp-route-id="@item.ProductID">Delete</a>                
             </td>
         </tr>
 }

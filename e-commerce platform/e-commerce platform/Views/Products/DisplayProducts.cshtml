@@ -1,0 +1,44 @@
+﻿@model IEnumerable<e_commerce_platform.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Products</h1>
+
+<!-- Display Products in Cards -->
+<section class="unique-feature-area section-gap" id="unique">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-6">
+                    <a class="product-card-link" asp-action="Details" asp-route-id="@item.ProductID">
+                        <div class="single-unique-product">
+                            @if (!string.IsNullOrEmpty(item.ProductImage))
+                            {
+                                <img class="img-fluid" src="@item.ProductImage" alt="@item.ProductName">
+                            }
+                            else
+                            {
+                                <img class="img-fluid" src="~/assets/img/no-image.png" alt="No Image Available">
+                            }
+                            <div class="desc">
+                                <h4>@item.ProductName</h4>
+                                <h6>@item.Price.ToString("C")</h6>
+                                @if (item.Quantity > 0)
+                                {
+                                    <a class="text-uppercase primary-btn" href="@Url.Action("AddToBasket", "Basket", new { productId = item.ProductID })">Add to Basket</a>
+                                }
+                                else
+                                {
+                                    <p class="text-uppercase out-of-stock">Out of Stock</p>
+                                }
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>

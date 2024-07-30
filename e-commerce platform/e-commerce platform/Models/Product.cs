@@ -36,5 +36,7 @@ namespace e_commerce_platform.Models
 
         [NotMapped]
         public decimal PriceAfterDiscount => Price - (Price * (Discount / 100));
+
+        public ICollection<ProductImage> AdditionalImages { get; set; }
     }
 }

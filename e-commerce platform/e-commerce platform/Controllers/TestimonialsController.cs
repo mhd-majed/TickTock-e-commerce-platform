@@ -6,19 +6,25 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using e_commerce_platform.Models;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace e_commerce_platform.Controllers
 {
     public class TestimonialsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public TestimonialsController(ApplicationDbContext context)
+        public TestimonialsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Testimonials
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Testimonial.Include(t => t.User);
@@ -56,19 +62,53 @@ namespace e_commerce_platform.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TestimonialID,UserID,Rating,Comment,Approved,CreatedAt,UpdatedAt,IsDeleted")] Testimonial testimonial)
+        public async Task<IActionResult> Create([Bind("TestimonialID,Rating,Comment")] Testimonial testimonial)
         {
-            if (ModelState.IsValid)
+            
+			var UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (UserId == null)
             {
-                _context.Add(testimonial);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Login", "Account");
             }
-            ViewData["UserID"] = new SelectList(_context.Users, "Id", "Id", testimonial.UserID);
+            // Check if the user already has a testimonial
+            var existingTestimonial = await _context.Testimonial
+                .FirstOrDefaultAsync(t => t.UserID == UserId && !t.IsDeleted);
+
+            if (existingTestimonial != null)
+            {
+                // User already has a testimonial
+                ViewBag.AlreadySubmitted = true;
+                return View(testimonial);
+            }
+
+            testimonial.UserID = UserId;
+			_context.Add(testimonial);
+			await _context.SaveChangesAsync();
+			return RedirectToAction(nameof(Index));
+			
+			
+		}
+        public async Task<IActionResult> MyTestimonials()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound("User not found.");
+            }
+
+            var testimonial = await _context.Testimonial
+                .Where(t => t.UserID == user.Id && !t.IsDeleted)
+                .FirstOrDefaultAsync();
+
+            if (testimonial == null)
+            {
+                // Log or debug information here
+                return View("Create");
+            }
+
             return View(testimonial);
         }
 
-        // GET: Testimonials/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,45 +121,48 @@ namespace e_commerce_platform.Controllers
             {
                 return NotFound();
             }
-            ViewData["UserID"] = new SelectList(_context.Users, "Id", "Id", testimonial.UserID);
             return View(testimonial);
         }
 
-        // POST: Testimonials/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TestimonialID,UserID,Rating,Comment,Approved,CreatedAt,UpdatedAt,IsDeleted")] Testimonial testimonial)
+        public async Task<IActionResult> Edit(int id, [Bind("TestimonialID,Rating,Comment")] Testimonial testimonial)
         {
             if (id != testimonial.TestimonialID)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            try
             {
-                try
+                var existingTestimonial = await _context.Testimonial.FindAsync(id);
+                if (existingTestimonial == null)
                 {
-                    _context.Update(testimonial);
-                    await _context.SaveChangesAsync();
+                    return NotFound();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!TestimonialExists(testimonial.TestimonialID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+
+                existingTestimonial.Rating = testimonial.Rating;
+                existingTestimonial.Comment = testimonial.Comment;
+                existingTestimonial.UpdatedAt = DateTime.Now;
+
+                _context.Update(existingTestimonial);
+                await _context.SaveChangesAsync();
             }
-            ViewData["UserID"] = new SelectList(_context.Users, "Id", "Id", testimonial.UserID);
-            return View(testimonial);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!TestimonialExists(testimonial.TestimonialID))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction(nameof(Index));
         }
+
+
 
         // GET: Testimonials/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -148,12 +191,52 @@ namespace e_commerce_platform.Controllers
             var testimonial = await _context.Testimonial.FindAsync(id);
             if (testimonial != null)
             {
-                _context.Testimonial.Remove(testimonial);
+                testimonial.IsDeleted = true;
+                _context.Testimonial.Update(testimonial);
+                await _context.SaveChangesAsync();
             }
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+        // GET: Testimonials/Approve/5
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Approve(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var testimonial = await _context.Testimonial
+                .FirstOrDefaultAsync(m => m.TestimonialID == id);
+            if (testimonial == null)
+            {
+                return NotFound();
+            }
+
+            return View(testimonial);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> ApproveConfirmed( int TestimonialID)
+        {
+            var testimonial = await _context.Testimonial.FindAsync(TestimonialID);
+
+            if (testimonial != null)
+            {
+                testimonial.Approved = true;
+                _context.Update(testimonial);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index)); 
+            }
+
+            return NotFound();
+        }
+
+
 
         private bool TestimonialExists(int id)
         {

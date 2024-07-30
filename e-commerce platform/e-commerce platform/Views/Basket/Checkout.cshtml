@@ -1,0 +1,97 @@
+﻿@model CheckoutViewModel
+
+<h1>Checkout</h1>
+
+<form asp-action="Checkout" method="post">
+    @if (Model.BasketItems != null && Model.BasketItems.Count > 0)
+    {
+        <table class="table d-none">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.BasketItems.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            @Model.BasketItems[i].ProductName
+                            <input type="hidden" asp-for="BasketItems[i].ProductId" />
+                            <input type="hidden" asp-for="BasketItems[i].ProductName" />
+                        </td>
+                        <td>
+                            @Model.BasketItems[i].Price.ToString("C")
+                            <input type="hidden" asp-for="BasketItems[i].Price" />
+                        </td>
+                        <td>
+                            @Model.BasketItems[i].Quantity
+                            <input type="hidden" asp-for="BasketItems[i].Quantity" />
+                        </td>
+                        <td>
+                            @(Model.BasketItems[i].TotalPrice.ToString("C"))
+                            <input type="hidden" asp-for="BasketItems[i].TotalPrice" />
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Your basket is empty.</p>
+    }
+
+    <section class="basket-area section-gap">
+        <div class="container">
+            <h2>Payment Infromation</h2>
+            <br />
+            <div class="form-group">
+                <label asp-for="SelectedAddressID" class="control-label">
+                    Select Address
+                    <a class="plus-icon" title="Add New Address" href="@Url.Action("Create", "Addresses")">
+                        <svg width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                            <path d="M8 3.5a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3H4.5a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 .5-.5z" />
+                            <path d="M8 0a8 8 0 1 0 8 8A8 8 0 0 0 8 0zm0 15a7 7 0 1 1 7-7 7 7 0 0 1-7 7z" />
+                        </svg>
+                    </a>
+                </label>
+                <select asp-for="SelectedAddressID" class="form-control custom-select" asp-items="@(new SelectList(Model.Addresses
+                .Where(a => !string.IsNullOrEmpty(a.State) || !string.IsNullOrEmpty(a.City) || !string.IsNullOrEmpty(a.Street))
+                .Select(a => new SelectListItem
+                {
+                    Value = a.AddressID.ToString(),
+                    Text = $"{a.State} {a.City} {a.Street}".Trim()
+                }), "Value", "Text"))">
+                </select>
+                <span asp-validation-for="SelectedAddressID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CardNumber" class="control-label">Card Number</label>
+                <input asp-for="CardNumber" class="form-control custom-input" />
+                <span asp-validation-for="CardNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ExpiryDate" class="control-label">Expiry Date (MM/YY)</label>
+                <input asp-for="ExpiryDate" class="form-control custom-input" />
+                <span asp-validation-for="ExpiryDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CVV" class="control-label">CVV</label>
+                <input asp-for="CVV" class="form-control custom-input" />
+                <span asp-validation-for="CVV" class="text-danger"></span>
+            </div>
+
+            <div class="form-group text-center">
+                <input type="submit" value="Place Order" class="btn btn-primary btn-lg" />
+            </div>
+        </div>
+    </section>
+</form>
+

@@ -10,13 +10,14 @@ namespace e_commerce_platform.Models
 
         [ForeignKey("User")]
         public string UserID { get; set; }
-        public ApplicationUser User { get; set; }  // Navigation property
+        public ApplicationUser User { get; set; }  
 
         [Range(1, 5)]
         public int Rating { get; set; }
 
-        [StringLength(1000)]
-        public string Comment { get; set; }
+		[StringLength(1000)]
+		[DataType(DataType.MultilineText)]
+		public string Comment { get; set; }
         public bool Approved { get; set; } = false;
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;

@@ -1,0 +1,28 @@
+﻿@model e_commerce_platform.Models.ProductImage
+
+@{
+    ViewData["Title"] = "Upload Images";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Upload Images for @ViewBag.ProductName</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UploadImages" enctype="multipart/form-data">
+            <input type="hidden" asp-for="ProductID" value="@ViewBag.ProductID" />
+            <div class="form-group">
+                <label for="files" class="control-label">Select Images</label>
+                <input type="file" id="files" name="files" multiple />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Upload" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

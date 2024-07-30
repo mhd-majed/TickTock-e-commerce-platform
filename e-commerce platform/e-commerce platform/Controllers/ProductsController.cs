@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using e_commerce_platform.Models;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authorization;
 
 namespace e_commerce_platform.Controllers
 {
@@ -22,7 +23,15 @@ namespace e_commerce_platform.Controllers
         }
 
         // GET: Products
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
+        {
+            var applicationDbContext = _context.Product.Include(p => p.Category);
+            return View(await applicationDbContext.ToListAsync());
+        }
+        
+
+        public async Task<IActionResult> DisplayProducts()
         {
             var applicationDbContext = _context.Product.Include(p => p.Category);
             return View(await applicationDbContext.ToListAsync());
@@ -35,9 +44,9 @@ namespace e_commerce_platform.Controllers
             {
                 return NotFound();
             }
-
             var product = await _context.Product
                 .Include(p => p.Category)
+                .Include(p => p.AdditionalImages) 
                 .FirstOrDefaultAsync(m => m.ProductID == id);
             if (product == null)
             {
@@ -46,19 +55,22 @@ namespace e_commerce_platform.Controllers
 
             return View(product);
         }
-
         // GET: Products/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             ViewData["CategoryID"] = new SelectList(_context.Category, "CategoryID", "CategoryName");
             return View();
         }
 
+
+
         // POST: Products/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("ProductID,ProductName,CategoryID,Discount,Price,Quantity,ProductImage,Description,IsDeleted")] Product product, IFormFile ProductImage)
         {
             if (ProductImage != null && ProductImage.Length > 0)
@@ -86,12 +98,15 @@ namespace e_commerce_platform.Controllers
 
             _context.Add(product);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-            
+            return RedirectToAction("UploadImages", "ProductImages", new { id = product.ProductID });
+
         }
 
 
+
+
         // GET: Products/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -113,6 +128,7 @@ namespace e_commerce_platform.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("ProductID,ProductName,CategoryID,Discount,Price,Quantity,ProductImage,Description,IsDeleted")] Product product, IFormFile ProductImage)
         {
             if (id != product.ProductID)
@@ -160,6 +176,7 @@ namespace e_commerce_platform.Controllers
         }
 
         // GET: Products/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -181,6 +198,7 @@ namespace e_commerce_platform.Controllers
         // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var product = await _context.Product.FindAsync(id);

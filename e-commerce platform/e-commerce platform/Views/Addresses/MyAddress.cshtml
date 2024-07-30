@@ -1,0 +1,49 @@
+﻿@model IEnumerable<e_commerce_platform.Models.Address>
+
+<br />
+<br />
+<section class="basket-area section-gap">
+    <div class="container">
+<h2>My Addresses</h2>
+
+@if (!Model.Any())
+{
+    <p>You have no addresses on file.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Street</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Postal Code</th>
+                <th>Country</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var address in Model)
+            {
+                <tr>
+                    <td>@address.Street</td>
+                    <td>@address.City</td>
+                    <td>@address.State</td>
+                    <td>@address.PostalCode</td>
+                    <td>@address.Country</td>
+                    <td>@address.CreatedAt.ToString("g")</td>
+                    <td>@address.UpdatedAt.ToString("g")</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@address.AddressID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@address.AddressID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@address.AddressID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+</div>
+</section>

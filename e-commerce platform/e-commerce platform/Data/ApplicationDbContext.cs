@@ -22,10 +22,13 @@ namespace e_commerce_platform.Models
             builder.Entity<Category>().HasQueryFilter(c => !c.IsDeleted);
             builder.Entity<Product>().HasQueryFilter(p => !p.IsDeleted);
             builder.Entity<Address>().HasQueryFilter(p => !p.IsDeleted);
+            builder.Entity<Testimonial>().HasQueryFilter(p => !p.IsDeleted);
+
         }
         public DbSet<e_commerce_platform.Models.Address> Address { get; set; } = default!;
         public DbSet<e_commerce_platform.Models.Testimonial> Testimonial { get; set; } = default!;
         public DbSet<e_commerce_platform.Models.Category> Category { get; set; } = default!;
         public DbSet<e_commerce_platform.Models.Product> Product { get; set; } = default!;
+        public DbSet<e_commerce_platform.Models.ProductImage> ProductImage { get; set; } = default!;
     }
 }
