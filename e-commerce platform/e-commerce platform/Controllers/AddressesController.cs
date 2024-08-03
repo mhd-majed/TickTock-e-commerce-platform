@@ -27,13 +27,32 @@ namespace e_commerce_platform.Controllers
             _logger.LogInformation("AddressesController instantiated with valid dependencies.");
         }
 
-        // GET: Addresses
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchQuery)
         {
-            var applicationDbContext = _context.Address.Include(a => a.User);
-            return View(await applicationDbContext.ToListAsync());
+            ViewData["CurrentFilter"] = searchQuery;
+
+            var addresses = _context.Address
+                                    .Include(a => a.User)
+                                    .Where(a => !a.IsDeleted && !a.User.IsDeleted)
+                                    .AsQueryable();
+
+            if (!String.IsNullOrEmpty(searchQuery))
+            {
+                searchQuery = searchQuery.ToLower();
+                addresses = addresses.Where(a =>
+                    a.User.FullName.ToLower().Contains(searchQuery) ||
+                    a.Street.ToLower().Contains(searchQuery) ||
+                    a.City.ToLower().Contains(searchQuery) ||
+                    a.State.ToLower().Contains(searchQuery) ||
+                    a.PostalCode.ToLower().Contains(searchQuery) ||
+                    a.Country.ToLower().Contains(searchQuery)
+                );
+            }
+
+            return View(await addresses.ToListAsync());
         }
+
 
         // GET: Addresses/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -81,7 +100,7 @@ namespace e_commerce_platform.Controllers
                     return RedirectToAction(nameof(Index));
                 }
             ViewData["UserID"] = new SelectList(_context.Users, "Id", "Id", address.UserID);
-            return View(address);
+            return View("MyAddress");
         }
 
         // GET: Addresses/Edit/5
@@ -179,7 +198,6 @@ namespace e_commerce_platform.Controllers
         }
         public async Task<IActionResult> MyAddress()
         {
-            Console.WriteLine("dskjhfkusdhfuhsdiufhsuidhfi7usd");
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {

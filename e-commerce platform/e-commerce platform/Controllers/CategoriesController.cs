@@ -25,9 +25,22 @@ namespace e_commerce_platform.Controllers
 
         // GET: Categories
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchQuery)
         {
-            return View(await _context.Category.ToListAsync());
+            ViewData["CurrentFilter"] = searchQuery;
+
+            var categories = _context.Category.AsQueryable();
+
+            if (!String.IsNullOrEmpty(searchQuery))
+            {
+                searchQuery = searchQuery.ToLower();
+                categories = categories.Where(c =>
+                    c.CategoryName.ToLower().Contains(searchQuery) ||
+                    c.Description.ToLower().Contains(searchQuery)
+                );
+            }
+
+            return View(await categories.ToListAsync());
         }
 
         // GET: Categories/Details/5

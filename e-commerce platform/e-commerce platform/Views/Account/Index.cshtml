@@ -1,10 +1,16 @@
-﻿@model IEnumerable<UserViewModel>
+﻿@model IEnumerable<e_commerce_platform.Models.UserViewModel>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1 class="my-4">User List</h1>
+<h1>Users List</h1>
+
+<form asp-action="Index" asp-controller="Account" method="get" class="form-inline mb-4">
+    <input type="text" name="searchQuery" class="form-control mr-sm-2" placeholder="Search by name or email" value="@ViewData["CurrentFilter"]" />
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -12,6 +18,7 @@
             <th>Full Name</th>
             <th>Phone Number</th>
             <th>Roles</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -33,6 +40,11 @@
                     {
                         <span class="badge bg-secondary">User</span>
                     }
+                </td>
+                <td>
+                    <form asp-action="DeleteUser" asp-controller="Account" asp-route-id="@user.UserId" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-link">Delete</button>
+                    </form>
                 </td>
             </tr>
         }

@@ -1,20 +1,28 @@
 ﻿@model IEnumerable<e_commerce_platform.Models.Product>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Products";
+    var searchTerm = ViewData["SearchTerm"] as string;
 }
 
 <h1>Products</h1>
 
-<!-- Display Products in Cards -->
-<section class="unique-feature-area section-gap" id="unique">
+<section class="unique-feature-area section-gap" id="unique" style="background-color:#fff">
     <div class="container">
+        <form asp-action="DisplayProducts" method="get" class="mb-4">
+            <div class="input-group">
+                <input type="text" name="searchTerm" class="form-control" placeholder="Search for products..." value="@searchTerm" />
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
         <div class="row">
             @foreach (var item in Model)
             {
                 <div class="col-lg-3 col-md-6">
                     <a class="product-card-link" asp-action="Details" asp-route-id="@item.ProductID">
-                        <div class="single-unique-product">
+                        <div class="single-unique-product" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
                             @if (!string.IsNullOrEmpty(item.ProductImage))
                             {
                                 <img class="img-fluid" src="@item.ProductImage" alt="@item.ProductName">
@@ -25,10 +33,20 @@
                             }
                             <div class="desc">
                                 <h4>@item.ProductName</h4>
-                                <h6>@item.Price.ToString("C")</h6>
+                                @if (item.Discount > 0)
+                                {
+                                    <h6>
+                                        <span class="original-price">@item.Price.ToString("C")</span>
+                                        <span class="discounted-price">@item.PriceAfterDiscount.ToString("C")</span>
+                                    </h6>
+                                }
+                                else
+                                {
+                                    <h6>@item.Price.ToString("C")</h6>
+                                }
                                 @if (item.Quantity > 0)
                                 {
-                                    <a class="text-uppercase primary-btn" href="@Url.Action("AddToBasket", "Basket", new { productId = item.ProductID })">Add to Basket</a>
+                                    <a class="text-uppercase primary-btn" href="javascript:void(0);" onclick="addToBasket(@item.ProductID)">Add to Basket</a>
                                 }
                                 else
                                 {
@@ -42,3 +60,59 @@
         </div>
     </div>
 </section>
+
+<!-- Modal for Alerts -->
+<div class="modal" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="alertModalLabel">Item Added</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Your item has been added to the basket. Would you like to continue shopping or go to the cart?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Continue Shopping</button>      
+                <a class="btn btn-primary" href="@Url.Action("Index", "Basket")">Go to Cart</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function addToBasket(productId) {
+            $.ajax({
+                url: '@Url.Action("AddToBasket", "Basket")',
+                type: 'POST',
+                data: { productId: productId },
+                success: function (response) {
+                    if (response.success) {
+                        $('#alertModal').modal('show');
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function () {
+                    alert('An error occurred while adding the item to the basket.');
+                }
+            });
+        }
+    </script>
+}
+
+<style>
+    .original-price {
+        text-decoration: line-through;
+        margin-right: 5px;
+    }
+
+    .discounted-price {
+        color: red;
+    }
+</style>

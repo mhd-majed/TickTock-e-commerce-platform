@@ -1,25 +1,67 @@
 ﻿@model e_commerce_platform.Models.UserInfoViewModel
 
-<br /><br />
+<br />
+<br />
 <section class="basket-area section-gap">
     <div class="container">
-<h2>User Information</h2>
+        <h2>Profile Details</h2>
 
-<div>
-    <label>Full Name:</label>
-    <span>@Model.FullName</span>
-</div>
+        <div class="card-body">
+            <div class="row mb-2">
+                <div class="col-md-2">
+                    <label class="font-weight-bold">Full Name:</label>
+                </div>
+                <div class="col-md-9">
+                    <span>@Model.FullName</span>
+                </div>
+            </div>
 
-<div>
-    <label>Email:</label>
-    <span>@Model.Email</span>
-</div>
+            <div class="row mb-2">
+                <div class="col-md-2">
+                    <label class="font-weight-bold">Email:</label>
+                </div>
+                <div class="col-md-9">
+                    <span>@Model.Email</span>
+                </div>
+            </div>
 
-<div>
-    <label>Phone Number:</label>
-    <span>@Model.PhoneNumber</span>
-</div>
-</div>
+            <div class="row mb-2">
+                <div class="col-md-2">
+                    <label class="font-weight-bold">Phone Number:</label>
+                </div>
+                <div class="col-md-9">
+                    <span>@Model.PhoneNumber</span>
+                </div>
+            </div>
+
+                <!-- Link to edit user information -->
+                <div class="mt-4">
+                    <a class="btn btn-primary btn-md" href="@Url.Action("EditUserInfo", "Account")">Edit Information</a>
+                <a class="btn btn-primary btn-md" href="@Url.Action("ChangePassword", "Account")">Change Password</a>
+
+                </div>
+            </div>
+    </div>
 </section>
 
+<style>
+    .card {
+        border-radius: 0.5rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+        padding: 2rem;
+    }
+
+    .card-title {
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+    }
+
+    .btn-lg {
+        padding: 0.75rem 1.25rem;
+        font-size: 1.125rem;
+    }
+</style>
 

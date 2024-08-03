@@ -2,13 +2,16 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
 }
 
-<h1>Index</h1>
+<h1>Testimonials List</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<form asp-action="Index" method="get" class="form-inline mb-4">
+    <input type="text" name="searchQuery" class="form-control mr-sm-2" placeholder="Search by user, status, or comment" value="@ViewData["CurrentFilter"]" />
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
 <table class="table">
     <thead>
         <tr>
@@ -29,9 +32,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.UpdatedAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsDeleted)
             </th>
             <th></th>
         </tr>
@@ -58,12 +58,8 @@
                 @Html.DisplayFor(modelItem => item.UpdatedAt)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsDeleted)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TestimonialID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.TestimonialID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TestimonialID">Delete</a>
+                <a asp-action="Delete" asp-route-id="@item.TestimonialID">Delete</a> |
                 <a asp-action="Approve" asp-route-id="@item.TestimonialID">Approve</a>
             </td>
         </tr>

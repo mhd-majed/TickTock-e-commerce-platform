@@ -27,11 +27,26 @@ namespace e_commerce_platform.Controllers
 
         // GET: Orders
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchQuery)
         {
-            var applicationDbContext = _context.Orders.Include(o => o.Address).Include(o => o.User);
-            return View(await applicationDbContext.ToListAsync());
+            ViewData["CurrentFilter"] = searchQuery;
+
+            var orders = _context.Orders.Include(o => o.Address).Include(o => o.User).AsQueryable();
+
+            if (!String.IsNullOrEmpty(searchQuery))
+            {
+                searchQuery = searchQuery.ToLower();
+                orders = orders.Where(o =>
+                    o.User.Id.ToLower().Contains(searchQuery) ||
+                    o.Status.ToLower().Contains(searchQuery) ||
+                    o.Address.AddressID.ToString().ToLower().Contains(searchQuery) ||
+                    o.PaymentStatus.ToLower().Contains(searchQuery)
+                );
+            }
+
+            return View(await orders.ToListAsync());
         }
+
 
         // GET: Orders/Details/5
         [Authorize(Roles = "Admin")]

@@ -12,6 +12,8 @@
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Total</th>
+                    <th>Discount</th>
+                
                 </tr>
             </thead>
             <tbody>
@@ -30,6 +32,10 @@
                         <td>
                             @Model.BasketItems[i].Quantity
                             <input type="hidden" asp-for="BasketItems[i].Quantity" />
+                        </td>
+                        <td>
+                            @(Model.BasketItems[i].TotalPrice.ToString("C"))
+                            <input type="hidden" asp-for="BasketItems[i].Discount" />
                         </td>
                         <td>
                             @(Model.BasketItems[i].TotalPrice.ToString("C"))

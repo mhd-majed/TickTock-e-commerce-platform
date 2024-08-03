@@ -27,7 +27,7 @@ namespace e_commerce_platform.Controllers
 											   .Where(t => t.Approved && !t.IsDeleted)
 											   .Include(t => t.User) 
 											   .OrderByDescending(t => t.CreatedAt)
-											   .Take(6)
+											   .Take(3)
 											   .ToList();
 
 			var viewModel = new HomeViewModel

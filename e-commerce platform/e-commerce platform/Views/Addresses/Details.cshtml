@@ -3,12 +3,12 @@
 @{
     ViewData["Title"] = "Details";
 }
-
-<h1>Details</h1>
+<br /><br />
+<section class="basket-area section-gap">
+    <div class="container">
+<h2>Details</h2>
 
 <div>
-    <h4>Address</h4>
-    <hr />
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.User)
@@ -62,5 +62,7 @@
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.AddressID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Delete" asp-route-id="@Model?.AddressID">Delete</a> |
 </div>
+</div>
+</section>

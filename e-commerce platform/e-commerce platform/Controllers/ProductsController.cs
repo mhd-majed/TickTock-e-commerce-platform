@@ -24,18 +24,41 @@ namespace e_commerce_platform.Controllers
 
         // GET: Products
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchQuery)
         {
-            var applicationDbContext = _context.Product.Include(p => p.Category);
-            return View(await applicationDbContext.ToListAsync());
-        }
-        
+            ViewData["CurrentFilter"] = searchQuery;
 
-        public async Task<IActionResult> DisplayProducts()
-        {
-            var applicationDbContext = _context.Product.Include(p => p.Category);
-            return View(await applicationDbContext.ToListAsync());
+            var products = _context.Product.Include(p => p.Category).AsQueryable();
+
+            if (!String.IsNullOrEmpty(searchQuery))
+            {
+                searchQuery = searchQuery.ToLower();
+                products = products.Where(p =>
+                    p.ProductName.ToLower().Contains(searchQuery) ||
+                    p.Category.CategoryName.ToLower().Contains(searchQuery) ||
+                    p.Description.ToLower().Contains(searchQuery)
+                );
+            }
+
+            return View(await products.ToListAsync());
         }
+
+
+        public async Task<IActionResult> DisplayProducts(string searchTerm)
+        {
+            var productsQuery = _context.Product.Include(p => p.Category).AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                productsQuery = productsQuery.Where(p => p.ProductName.Contains(searchTerm));
+            }
+
+            var products = await productsQuery.ToListAsync();
+
+            ViewData["SearchTerm"] = searchTerm; // Pass the search term to the view
+            return View(products);
+        }
+
 
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)

@@ -12,7 +12,7 @@
 				<h1>
 					Smart New Future
 				</h1>
-				<a href="#" class="primary-btn text-uppercase">Buy Now</a>
+				<a href="@Url.Action("DisplayProducts", "Products")" class="primary-btn text-uppercase">Buy Now</a>
 			</div>
 		</div>
 	</div>
@@ -21,7 +21,7 @@
 	<div class="container">
 		<div class="row d-flex justify-content-center">
 			<div class="col-md-8 pb-40 header-text">
-				<h1>Approved Testimonials</h1>
+				<h1>Testimonials</h1>
 				<p>Here are some of the testimonials we have received.</p>
 			</div>
 		</div>
@@ -31,12 +31,21 @@
 				<div class="col-lg-4 col-md-6">
 					<div class="single-service">
 						<h4><span class="lnr lnr-user"></span>@testimonial.User.FullName</h4>
-						<p style="font-size:12px;">@testimonial.Rating/5  @testimonial.UpdatedAt  </p>
+						<p style="font-size:12px;">
+							@for (var i = 0; i < 5; i++)
+							{
+								<i class="fa @(i < testimonial.Rating ? "fa-star" : "fa-star-o")" style="color: gold;"></i>
+							}
+						</p>
+						<p>
+							@testimonial.UpdatedAt
+						</p>
 						<p>@testimonial.Comment</p>
 					</div>
 				</div>
 			}
 		</div>
+
 	</div>
 </section>
 <!-- End service Area -->
@@ -46,8 +55,8 @@
 		<div class="row d-flex justify-content-center">
 			<div class="menu-content pb-60 col-lg-10">
 				<div class="title text-center">
-					<h1 class="mb-10 text-white">Some Features that Made us Unique</h1>
-					<p>Who are in extremely love with eco friendly system.</p>
+					<h1 class="mb-10 text-white">Latest Arrival</h1>
+					<p style="color:#fff;">Discover the latest in smartwatch technology.</p>
 				</div>
 			</div>
 		</div>
@@ -59,8 +68,15 @@
 						<img class="img-fluid" src="@product.ProductImage" alt="">
 						<div class="desc">
 							<h4>@product.ProductName</h4>
-							<h6>£@product.PriceAfterDiscount</h6>
-							<a class="text-uppercase primary-btn" href="#">Pre Order</a>
+							<h6>@product.Price.ToString("C")</h6>
+							@if (product.Quantity > 0)
+							{
+								<a class="text-uppercase primary-btn" href="@Url.Action("AddToBasket", "Basket", new { productId = product.ProductID })">Add to Basket</a>
+							}
+							else
+							{
+								<p class="text-uppercase out-of-stock">Out of Stock</p>
+							}
 						</div>
 					</div>
 				</div>
@@ -87,14 +103,14 @@
 						<div class="card-header" id="headingOne">
 							<h5 class="mb-0">
 								<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-									Are your Templates responsive?
+									What types of smartwatches do you offer?
 								</button>
 							</h5>
 						</div>
 
 						<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
 							<div class="card-body">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+								We offer a wide range of smartwatches, including fitness trackers, premium luxury models, and smartwatches with advanced features like GPS and heart rate monitoring. Browse our categories to find the perfect smartwatch for your needs.
 							</div>
 						</div>
 					</div>
@@ -102,13 +118,13 @@
 						<div class="card-header" id="headingTwo">
 							<h5 class="mb-0">
 								<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-									Does it have all the plugin as mentioned?
+									How do I choose the right smartwatch for me?
 								</button>
 							</h5>
 						</div>
 						<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
 							<div class="card-body">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+								Consider what features are most important to you, such as fitness tracking, notifications, battery life, or compatibility with your smartphone. Our product descriptions and filters will help you narrow down your options based on your preferences.
 							</div>
 						</div>
 					</div>
@@ -116,13 +132,13 @@
 						<div class="card-header" id="headingThree">
 							<h5 class="mb-0">
 								<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-									Can i use the these theme for my client?
+									What is your return policy?
 								</button>
 							</h5>
 						</div>
 						<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
 							<div class="card-body">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+								We offer a 30-day return policy on most smartwatches. If you are not satisfied with your purchase, please contact our customer service team for instructions on how to return the item. Please note that the smartwatch must be in its original condition and packaging.
 							</div>
 						</div>
 					</div>
@@ -130,13 +146,13 @@
 						<div class="card-header" id="headingThree">
 							<h5 class="mb-0">
 								<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
-									Are your Templates responsive?
+									How long does shipping take?
 								</button>
 							</h5>
 						</div>
 						<div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
 							<div class="card-body">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+								Standard shipping typically takes 3-5 business days. Expedited shipping options are available at checkout for faster delivery. You’ll receive a tracking number once your order has shipped.
 							</div>
 						</div>
 					</div>

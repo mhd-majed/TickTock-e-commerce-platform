@@ -25,9 +25,22 @@ namespace e_commerce_platform.Controllers
 
         // GET: Testimonials
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchQuery)
         {
-            var applicationDbContext = _context.Testimonial.Include(t => t.User);
+            var applicationDbContext = _context.Testimonial.Include(t => t.User).AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                searchQuery = searchQuery.ToLower();
+                applicationDbContext = applicationDbContext.Where(t =>
+                    t.User.Id.ToLower().Contains(searchQuery) ||
+                    t.Comment.ToLower().Contains(searchQuery) ||
+                    t.Approved.ToString().ToLower().Contains(searchQuery) // Adjust based on how you handle "Approved"
+                );
+            }
+
+            ViewData["CurrentFilter"] = searchQuery;
+
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -84,7 +97,7 @@ namespace e_commerce_platform.Controllers
             testimonial.UserID = UserId;
 			_context.Add(testimonial);
 			await _context.SaveChangesAsync();
-			return RedirectToAction(nameof(Index));
+			return RedirectToAction("MyTestimonials");
 			
 			
 		}
@@ -159,7 +172,7 @@ namespace e_commerce_platform.Controllers
                     throw;
                 }
             }
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("MyTestimonials");
         }
 
 

@@ -12,11 +12,13 @@ namespace e_commerce_platform.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        private readonly ApplicationDbContext _context;
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _context = context;
+
         }
 
         [HttpGet]
@@ -30,7 +32,7 @@ namespace e_commerce_platform.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FullName = model.FullName};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FullName = model.FullName, PhoneNumber = model.PhoneNumber };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -119,9 +121,11 @@ namespace e_commerce_platform.Controllers
             return RedirectToAction("Login", "Account");
         }
 
-        [Authorize(Roles = "Admin")] 
-        public async Task<IActionResult> index()
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Index(string searchQuery)
         {
+            ViewData["CurrentFilter"] = searchQuery;
+
             var users = await _userManager.Users.ToListAsync();
             var userViewModels = new List<UserViewModel>();
 
@@ -137,9 +141,185 @@ namespace e_commerce_platform.Controllers
                 });
             }
 
+            if (!String.IsNullOrEmpty(searchQuery))
+            {
+                userViewModels = userViewModels
+                    .Where(u => u.FullName.Contains(searchQuery, StringComparison.OrdinalIgnoreCase)
+                             || u.Email.Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+            }
+
             return View(userViewModels);
         }
 
+
+        public async Task<IActionResult> EditUserInfo()
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return NotFound("User not found.");
+            }
+
+            var model = new UserUpdateViewModel
+            {
+                FullName = user.FullName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateUserInfo(UserUpdateViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("EditUserInfo", model);
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return NotFound("User not found.");
+            }
+
+            user.FullName = model.FullName;
+            user.Email = model.Email;
+            user.PhoneNumber = model.PhoneNumber;
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (result.Succeeded)
+            {
+                TempData["SuccessMessage"] = "Your information has been updated.";
+                return RedirectToAction("UserInfo");
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+
+            return View("EditUserInfo", model);
+        }
+        // GET: Admin/EditUser/5
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> EditUser(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null || user.IsDeleted)
+            {
+                return NotFound();
+            }
+
+            var model = new UserViewModel
+            {
+                UserId = user.Id,
+                Email = user.Email,
+                FullName = user.FullName,
+                PhoneNumber = user.PhoneNumber
+            };
+
+            return View(model);
+        }
+
+        // POST: Account/EditUser
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> EditUser(UserViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var user = await _userManager.FindByIdAsync(model.UserId);
+            if (user == null || user.IsDeleted)
+            {
+                return NotFound();
+            }
+
+            user.Email = model.Email;
+            user.FullName = model.FullName;
+            user.PhoneNumber = model.PhoneNumber;
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (result.Succeeded)
+            {
+                TempData["SuccessMessage"] = "User updated successfully.";
+                return RedirectToAction("Index");
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+
+            return View(model);
+        }
+
+        // POST: Account/DeleteUser/5
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null || user.IsDeleted)
+            {
+                return NotFound();
+            }
+
+            user.IsDeleted = true; 
+            var result = await _userManager.UpdateAsync(user);
+
+            if (result.Succeeded)
+            {
+                TempData["SuccessMessage"] = "User deleted successfully.";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "Failed to delete the user.";
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Json(new { success = false, message = "Please correct the errors in the form." });
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return Json(new { success = false, message = "User not found." });
+            }
+
+            var result = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+            if (result.Succeeded)
+            {
+                // Optionally, you can sign out the user and prompt them to log in again.
+                // await _signInManager.RefreshSignInAsync(user);
+                return Json(new { success = true, message = "Your password has been successfully changed." });
+            }
+
+            var errorMessage = string.Join(", ", result.Errors.Select(e => e.Description));
+            return Json(new { success = false, message = errorMessage });
+        }
 
 
     }

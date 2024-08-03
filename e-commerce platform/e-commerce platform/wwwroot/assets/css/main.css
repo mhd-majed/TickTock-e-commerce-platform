@@ -3094,3 +3094,6 @@ tbody tr:nth-child(even) {
     font-weight:400;
     font-size: 12px;
 }
+.btn-primary {
+    background-color:#2360e7;
+}

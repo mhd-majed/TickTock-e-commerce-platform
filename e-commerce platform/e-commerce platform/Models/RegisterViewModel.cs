@@ -21,5 +21,9 @@ namespace e_commerce_platform.Models
         [StringLength(100)]
         public string FullName { get; set; }
 
+        [Required]
+        [Phone]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
     }
 }

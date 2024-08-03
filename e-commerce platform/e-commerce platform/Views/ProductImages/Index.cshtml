@@ -5,11 +5,17 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Product Images List</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+<form asp-action="Index" method="get" class="form-inline mb-4">
+    <input type="text" name="searchQuery" class="form-control mr-sm-2" placeholder="Search by product name or image URL" value="@ViewData["CurrentFilter"]" />
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -23,20 +29,28 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageUrl)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ImageID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ImageID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ImageID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.ProductName)
+                </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.ImageUrl))
+                    {
+                        <img src="@item.ImageUrl" alt="Product Image" style="max-width: 150px; max-height: 100px;" />
+                    }
+                    else
+                    {
+                        <span>No Image</span>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ImageID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ImageID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ImageID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

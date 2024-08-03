@@ -1,8 +1,8 @@
 ﻿@model List<e_commerce_platform.Models.BasketItem>
-
+<br /><br />
 <section class="basket-area section-gap">
     <div class="container">
-        <h2>Basket</h2>
+        <h2>Your Cart</h2>
         <br />
         <div class="table-responsive">
             <table class="table">
@@ -31,8 +31,11 @@
                             <td class="text-center">@((item.PriceAfterDiscount * item.Quantity).ToString("C"))</td>
                             <td class="text-center">
                                 <form asp-action="RemoveFromBasket" asp-route-productId="@item.ProductId" method="post" class="d-inline">
-                                    <input type="submit" value="Remove" class="btn btn-danger btn-sm btns" />
+                                    <button type="submit" class="btn btn-danger btn-sm btns">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </button>
                                 </form>
+
                             </td>
                         </tr>
                     }
@@ -49,19 +52,43 @@
             </div>
             <div class="col-md-4">
                 <a asp-action="Checkout" class="btn btn-success btn-lg btn-block btns">Proceed to Checkout</a>
-                </div>
+            </div>
             <div class="col-md-4">
                 <span class="subtotal-text">Subtotal: @Model.Sum(item => item.PriceAfterDiscount * item.Quantity).ToString("C")</span>
             </div>
         </div>
     </div>
 </section>
-
-
-
+<style>
+    th{
+        text-align:center;
+    }
+</style>
 @section Scripts {
     <script>
         $(document).ready(function () {
+            function updateSubtotal() {
+                let subtotal = 0;
+                $('.table tbody tr').each(function () {
+                    // Extract and parse price and quantity
+                    const priceText = $(this).find('td:nth-child(2)').text().replace(/[^0-9.-]+/g, "");
+                    const quantity = parseInt($(this).find('.quantity-input').val(), 10);
+
+                    // Validate extracted price and quantity
+                    const price = parseFloat(priceText);
+                    if (isNaN(price) || isNaN(quantity)) {
+                        console.error('Invalid data:', { priceText, quantity });
+                        return; // Skip invalid rows
+                    }
+
+                    // Accumulate subtotal
+                    subtotal += price * quantity;
+                });
+
+                // Update subtotal display
+                $('.subtotal-text').text(`Subtotal: ${subtotal.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}`);
+            }
+
             $('.btn-increase').click(function () {
                 var row = $(this).closest('tr');
                 var productId = row.data('product-id');
@@ -73,8 +100,13 @@
                         if (response.success) {
                             row.find('.quantity-input').val(response.newQuantity);
                             row.find('td:nth-child(4)').text(response.newTotal);
+                            updateSubtotal();
                         } else {
-                            alert(response.message);
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: response.message,
+                            });
                         }
                     }
                 });
@@ -91,21 +123,21 @@
                         if (response.success) {
                             row.find('.quantity-input').val(response.newQuantity);
                             row.find('td:nth-child(4)').text(response.newTotal);
+                            updateSubtotal();
                         } else {
-                            alert(response.message);
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: response.message,
+                            });
                         }
                     }
                 });
             });
+
+            // Initial subtotal calculation
+            updateSubtotal();
         });
     </script>
 }
-<style>
-    .basket-area {
-        padding: 70px 0;
-    }
 
-    th {
-        text-align: center;
-    }
-</style>

@@ -22,11 +22,25 @@ namespace e_commerce_platform.Controllers
 
         // GET: ProductImages
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchQuery)
         {
-            var applicationDbContext = _context.ProductImage.Include(p => p.Product);
-            return View(await applicationDbContext.ToListAsync());
+            ViewData["CurrentFilter"] = searchQuery;
+
+            var productImages = _context.ProductImage.Include(p => p.Product).AsQueryable();
+
+            if (!String.IsNullOrEmpty(searchQuery))
+            {
+                searchQuery = searchQuery.ToLower();
+                productImages = productImages.Where(p =>
+                    p.Product.ProductName.ToLower().Contains(searchQuery) ||
+                    p.ImageUrl.ToLower().Contains(searchQuery)
+                );
+            }
+
+            return View(await productImages.ToListAsync());
         }
+
+
         [Authorize(Roles = "Admin")]
         // GET: ProductImages/Details/5
         public async Task<IActionResult> Details(int? id)

@@ -22,6 +22,7 @@ else
                 <th>Country</th>
                 <th>Created At</th>
                 <th>Updated At</th>
+                <th>Details</th>
             </tr>
         </thead>
         <tbody>
@@ -36,9 +37,7 @@ else
                     <td>@address.CreatedAt.ToString("g")</td>
                     <td>@address.UpdatedAt.ToString("g")</td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@address.AddressID">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@address.AddressID">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@address.AddressID">Delete</a>
+                    <a asp-action="Details" asp-route-id="@address.AddressID" class="btn btn-primary btn-sm">Details</a>
                     </td>
                 </tr>
             }

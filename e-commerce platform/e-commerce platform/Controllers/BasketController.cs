@@ -28,7 +28,7 @@ public class BasketController : Controller
         var product = _context.Product.Find(productId);
         if (product == null || product.IsDeleted)
         {
-            return NotFound();
+            return Json(new { success = false, message = "Product not found or is deleted." });
         }
 
         var basket = HttpContext.Session.Get<List<BasketItem>>("Basket") ?? new List<BasketItem>();
@@ -49,14 +49,14 @@ public class BasketController : Controller
                 Quantity = 1,
                 Price = product.Price,
                 Discount = product.Discount,
-            
             });
         }
 
         HttpContext.Session.Set("Basket", basket);
 
-        return RedirectToAction("Index");
+        return Json(new { success = true, message = "Item added to basket." });
     }
+
 
     [HttpPost]
     public IActionResult RemoveFromBasket(int productId)
@@ -171,7 +171,6 @@ public class BasketController : Controller
 
         return View(order);
     }
-
     [HttpPost]
     public IActionResult IncreaseQuantity(int productId)
     {
@@ -210,6 +209,7 @@ public class BasketController : Controller
         }
         return Json(new { success = false, message = "Quantity cannot be less than 1" });
     }
+
 
 }
 

@@ -60,46 +60,57 @@
                 <div class="position-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index", "Account")">
-                                <i class="bi bi-box-arrow-right"></i>
-                                Users
+                            <a class="nav-link" <a href="@Url.Action("Index", "Home")"><img src="~/assets/img/logo1.png" alt="" title="" />
+
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index", "Addresses")">
-                                <i class="bi bi-box-arrow-right"></i>
-                                Addresses
+                            <a class="nav-link" href="@Url.Action("Index", "Account")" data-target="account">
+                                <i class="bi bi-person" style="font-size: 1.25rem;"></i>
+                                <span class="ms-2">Users</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="@Url.Action("Index", "Categories")">
-                                <i class="bi bi-house-door"></i>
-                                Categories
+                            <a class="nav-link" href="@Url.Action("Index", "Addresses")" data-target="addresses">
+                                <i class="bi bi-house" style="font-size: 1.25rem;"></i>
+                                <span class="ms-2">Addresses</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index", "Products")">
-                                <i class="bi bi-person"></i>
-                                Products
+                            <a class="nav-link" href="@Url.Action("Index", "Categories")" data-target="categories">
+                                <i class="bi bi-tags" style="font-size: 1.25rem;"></i>
+                                <span class="ms-2">Categories</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index", "ProductImages")">
-                                <i class="bi bi-question-circle"></i>
-                                Product Images
+                            <a class="nav-link" href="@Url.Action("Index", "Products")" data-target="products">
+                                <i class="bi bi-box" style="font-size: 1.25rem;"></i>
+                                <span class="ms-2">Products</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index", "Orders")">
-                                <i class="bi bi-gear"></i>
-                                Orders
+                            <a class="nav-link" href="@Url.Action("Index", "ProductImages")" data-target="product-images">
+                                <i class="bi bi-images" style="font-size: 1.25rem;"></i>
+                                <span class="ms-2">Product Images</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index", "Orders")" data-target="orders">
+                                <i class="bi bi-cart" style="font-size: 1.25rem;"></i>
+                                <span class="ms-2">Orders</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index", "Testimonials")" data-target="Testimonials">
+                                <i class="bi bi-chat-left-text" style="font-size: 1.25rem;"></i>
+                                <span class="ms-2">Testimonials</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
                                 <button type="submit" class="nav-link btn btn-link">
-                                    <i class="bi bi-box-arrow-right"></i>
-                                    Logout
+                                    <i class="bi bi-box-arrow-right" style="font-size: 1.25rem;"></i>
+                                    <span class="ms-2">Logout</span>
                                 </button>
                             </form>
                         </li>
@@ -107,12 +118,31 @@
                 </div>
             </nav>
 
+
+
             <!-- Main Content -->
             <main class="main-content col-md-9 ms-sm-auto col-lg-10 px-4">
                 @RenderBody()
             </main>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get all nav links
+            const navLinks = document.querySelectorAll("#sidebar .nav-link");
+
+            // Add click event listener to each nav link
+            navLinks.forEach(link => {
+                link.addEventListener("click", function (e) {
+                    // Remove active class from all links
+                    navLinks.forEach(link => link.classList.remove("active"));
+
+                    // Add active class to the clicked link
+                    e.currentTarget.classList.add("active");
+                });
+            });
+        });
+    </script>
 
     <script src="~/assets/js/scroll-header.js"></script>
 

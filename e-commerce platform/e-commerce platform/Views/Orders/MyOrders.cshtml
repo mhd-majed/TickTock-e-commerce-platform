@@ -36,7 +36,7 @@
                     <td>@order.TotalAmount.ToString("C")</td>
                     <td>@order.Status</td>
                     <td>
-                        <a href="@Url.Action("Confirmation", "Basket", new { orderId = order.OrderID })" class="btn btn-info btn-sm">View Details</a>
+                                <a href="@Url.Action("Confirmation", "Basket", new { orderId = order.OrderID })" class="btn btn-primary btn-sm">View Details</a>
                     </td>
                 </tr>
             }
